@@ -9,8 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
           node-version: 16
@@ -23,8 +21,7 @@ jobs:
         run: |
           git config --global user.name "Yakov Lipkovich"
           git config --global user.email 'no@no'
-          git checkout latest
-          git merge master
+          git checkout -b latest
           git add -f dist
           git commit -m "Automatically create release"
-          git push
+          git push -f --set-upstream origin latest
