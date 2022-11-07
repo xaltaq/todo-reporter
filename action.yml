@@ -1,0 +1,42 @@
+name: 'TODO Reporter'
+description: 'Find and report TODOs in the codebase'
+author: 'Xaltaq Corporation'
+inputs:
+  token:
+    description: 'Specify the token to use to publish the check.'
+    required: false
+    default: ${{ github.token }}
+  files:
+    description: 'Files or globs to check for TODOs.'
+    required: true
+  ignore:
+    description: 'Files or globs to ignore checking for TODOs.'
+    required: false
+    default: ''
+  tags:
+    description: 'Additional comment types to find.'
+    required: false
+    default: ''
+  associate_parser:
+    description: 'Associate filetypes with parsers.'
+    required: false
+    default: ''
+  skip_unsupported:
+    description: 'Skip unsupported extensions (as opposed to failing)'
+    required: false
+    default: 'false'
+  task_enforcement:
+    description: 'Mark action as failed based on TODOs and associated tasks.'
+    required: false
+    default: 'open_in_repo'
+  report_per_task:
+    description: 'Create a report grouping TODOs by task linked.'
+    required: false
+    default: 'true'
+  report_per_file:
+    description: 'Create a report grouping TODOs by files they are found.'
+    required: false
+    default: 'true'
+runs:
+  using: 'node16'
+  main: 'dist/index.mjs'
