@@ -39,4 +39,4 @@ inputs:
     default: 'true'
 runs:
   using: 'node16'
-  main: 'dist/index.mjs'
+  main: 'dist/main.mjs'
