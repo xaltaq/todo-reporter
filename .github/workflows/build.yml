@@ -1,0 +1,30 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - name: Build TS
+        run: |
+          npm i
+          npm run build
+      - name: Publish to 'latest' branch
+        run: |
+          git config --global user.name "Yakov Lipkovich"
+          git config --global user.email 'no@no'
+          git checkout latest
+          git merge master
+          git add -f dist
+          git commit -m "Automatically create release"
+          git push
