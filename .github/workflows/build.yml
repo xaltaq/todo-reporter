@@ -13,10 +13,11 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-      - name: Build TS
+      - name: Build and package
         run: |
           npm i
           npm run build
+          npm run package
       - name: Publish to 'latest' branch
         run: |
           git config --global user.name "Yakov Lipkovich"
