@@ -1,0 +1,1 @@
+{"version":3,"file":"851.index.mjs","mappings":";;;;;;;;;;;AAAA","sources":["webpack://todo-reporter/./node_modules/leasot/dist/lib/reporters/json.js"],"sourcesContent":["export const reporter = (todos, config = { spacing: 2 }) => JSON.stringify(todos, null, config.spacing);\n"],"names":[],"sourceRoot":""}
